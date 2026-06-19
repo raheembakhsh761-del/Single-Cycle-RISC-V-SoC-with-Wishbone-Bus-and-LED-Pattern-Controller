@@ -1,0 +1,39 @@
+SYSCONFIG CONFIG_IOVOLTAGE=3.3 COMPRESS_CONFIG=ON MCCLK_FREQ=62 SLAVE_SPI_PORT=DISABLE MASTER_SPI_PORT=ENABLE SLAVE_PARALLEL_PORT=DISABLE;
+
+# ============================================================
+# Colorlight i5 / LFE5U-45
+# Top module ports:
+#     input  clk
+#     output led[4:0]
+# ============================================================
+
+# ------------------------------------------------------------
+# 25 MHz onboard clock
+# ------------------------------------------------------------
+LOCATE COMP "clk" SITE "P3";
+IOBUF PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHZ;
+
+# ------------------------------------------------------------
+# External LED outputs on P6 header
+# ------------------------------------------------------------
+
+# led[0] -> P6_12 -> FPGA N2
+LOCATE COMP "led[0]" SITE "N2";
+IOBUF PORT "led[0]" PULLMODE=NONE IO_TYPE=LVCMOS33 DRIVE=4;
+
+# led[1] -> P6_13 -> FPGA V1
+LOCATE COMP "led[1]" SITE "V1";
+IOBUF PORT "led[1]" PULLMODE=NONE IO_TYPE=LVCMOS33 DRIVE=4;
+
+# led[2] -> P6_14 -> FPGA Y2
+LOCATE COMP "led[2]" SITE "Y2";
+IOBUF PORT "led[2]" PULLMODE=NONE IO_TYPE=LVCMOS33 DRIVE=4;
+
+# led[3] -> P6_15 -> FPGA T1
+LOCATE COMP "led[3]" SITE "T1";
+IOBUF PORT "led[3]" PULLMODE=NONE IO_TYPE=LVCMOS33 DRIVE=4;
+
+# led[4] -> P6_16 -> FPGA R1
+LOCATE COMP "led[4]" SITE "R1";
+IOBUF PORT "led[4]" PULLMODE=NONE IO_TYPE=LVCMOS33 DRIVE=4;
